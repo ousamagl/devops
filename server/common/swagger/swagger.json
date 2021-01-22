@@ -1,0 +1,86 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Loans handler",
+      "description": "creating and displaying loans (TMM)",
+      "version": "1.0.0"
+    },
+    "servers": [
+      {
+        "url": "/api/v1"
+      }
+    ],
+    "tags": [
+      {
+        "name": "interactive API",
+        "description": "try the api"
+      }
+    ],
+    "paths": {
+      "/loans": {
+        "post": {
+          "tags": [
+            "Loans"
+          ],
+          "description": "register a new loan",
+          "requestBody": {
+            "description": "Create a loan",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoanBody"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Returns all notes",
+              "content": {}
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "Loans"
+          ],
+          "description": "Get all Loans",
+          "requestBody": {
+            "description": "Get all Loans",
+            "content": {
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Returns all Loans",
+              "content": {}
+            }
+          }
+        }
+
+      }
+    },
+    "components": {
+      "schemas": {
+        "LoanBody": {
+          "title": "loan",
+          "required": [
+            "owner","ammount","ammountToPay"
+          ],
+          "type": "object",
+          "properties": {
+         
+            "owner": {
+              "type": "string",
+              "example": "oussama"
+            },
+            "ammount": {
+              "type": "number",
+              "example": 10000
+            }
+          }
+        }
+      }
+    }
+  }
