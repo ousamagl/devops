@@ -2,10 +2,9 @@ import { Request, Response } from 'express';
 import BankService from '../../services/loan.service';
 export class Controller {
   create(req: Request, res: Response): void {
-    BankService.create(
-      req.body.owner,
-      req.body.ammount,
-    ).then((r) => res.status(201).location(`/api/v1/notes`).json(r));
+    BankService.create(req.body.owner, req.body.ammount).then((r) =>
+      res.status(201).location(`/api/v1/notes`).json(r)
+    );
   }
 
   /* update(req: Request, res: Response): void {
