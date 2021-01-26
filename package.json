@@ -1,7 +1,7 @@
 {
-  "name": "noteapp",
+  "name": "loanshandler",
   "version": "1.0.0",
-  "description": "A note app",
+  "description": "create and manage loans",
   "main": "index.js",
   "scripts": {
     "start": "node dist/index.js",
