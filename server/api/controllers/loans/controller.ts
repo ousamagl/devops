@@ -5,7 +5,6 @@ export class Controller {
     BankService.create(
       req.body.owner,
       req.body.ammount,
-      req.body.status
     ).then((r) => res.status(201).location(`/api/v1/notes`).json(r));
   }
 
