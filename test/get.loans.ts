@@ -8,31 +8,19 @@ import { before } from 'mocha';
 let server;
 
 describe('notes', () => {
-before( async ()=>{server = await Server;})
-
+  before(async () => { server = await Server; })
   it('test add a new loan1', async () =>
     request(server)
       .post('/api/v1/loans')
-      .send({ owner: 'testloan1', ammount: 1000,ammountToPay:1120 })
+      .send({ owner: 'testloan1', ammount: 1000, ammountToPay: 1120 })
       .expect('Content-Type', /json/)
       .then(r => {
         expect(r.body)
           .to.be.an('object')
           .that.has.property('ammountToPay')
-          .equal(1120) 
+          .equal(1120)
       }));
 
-      it('test add a new loan2', async () =>
-    request(server)
-      .post('/api/v1/loans')
-      .send({ owner: 'testloan2', ammount: 2000,ammountToPay:2240 })
-      .expect('Content-Type', /json/)
-      .then(r => {
-        expect(r.body)
-          .to.be.an('object')
-          .that.has.property('owner')
-          .equal('testloan2') 
-      }));
 
   it('test retrieve all records', () =>
     request(server)
@@ -41,7 +29,7 @@ before( async ()=>{server = await Server;})
       .then(r => {
         expect(r.body)
           .to.be.an('array')
-          .of.length(2);
+          .of.length(1);
       }));
-  
+
 });
