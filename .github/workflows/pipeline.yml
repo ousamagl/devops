@@ -1,0 +1,45 @@
+name: pipeline
+
+on: 
+  push:
+    branches: [main]
+env:
+  LOG_LEVEL: info
+  PORT: 3000
+  NODE_ENV: test
+  MONGO_DB: ogalmami_dbdevops
+
+jobs:
+    TestCreate:
+      runs-on: ubuntu-latest
+      steps:
+        - name: test loan creation
+          run: |
+            npm run testcreate
+
+    TestGet:
+      runs-on: ubuntu-latest
+      steps:
+        - name: test loan retrieval
+          run: |
+            npm run testget
+    Build:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v1
+        - name: npm install
+          run: |
+            npm install
+        - name: npm run test
+          run: |
+            npm run test
+        - name: npm run lint
+          run: |
+            npm run lint
+        - name: npm run compile
+          run: |
+            npm run compile
+        - uses: actions/upload-artifact@master
+          with:
+            name: dist aritiact
+            path: dist/
