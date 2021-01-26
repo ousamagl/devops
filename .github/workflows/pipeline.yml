@@ -2,7 +2,7 @@ name: pipeline
 
 on: 
   push:
-    branches: [main]
+    branches: [master]
 env:
   LOG_LEVEL: info
   PORT: 3000
