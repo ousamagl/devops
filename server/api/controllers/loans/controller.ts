@@ -2,12 +2,14 @@ import { Request, Response } from 'express';
 import BankService from '../../services/loan.service';
 export class Controller {
   create(req: Request, res: Response): void {
-    BankService.create(req.body.owner,req.body.ammount,req.body.status).then((r) =>
-      res.status(201).location(`/api/v1/notes`).json(r)
-    );
+    BankService.create(
+      req.body.owner,
+      req.body.ammount,
+      req.body.status
+    ).then((r) => res.status(201).location(`/api/v1/notes`).json(r));
   }
 
- /* update(req: Request, res: Response): void {
+  /* update(req: Request, res: Response): void {
     BankService.update(req.body.name,req.body.status).then((r) =>
       res.status(200).location(`/api/v1/notes`).json(r)
     );
