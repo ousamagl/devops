@@ -13,15 +13,19 @@ jobs:
     TestCreate:
       runs-on: ubuntu-latest
       steps:
+        - uses: actions/checkout@v1
         - name: test loan creation
           run: |
+            npm install
             npm run testcreate
 
     TestGet:
       runs-on: ubuntu-latest
       steps:
+        - uses: actions/checkout@v1
         - name: test loan retrieval
           run: |
+            npm install
             npm run testget
     Build:
       runs-on: ubuntu-latest
