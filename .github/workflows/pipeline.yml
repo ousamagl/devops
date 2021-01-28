@@ -8,6 +8,9 @@ env:
   PORT: 3000
   NODE_ENV: test
   MONGO_DB: ogalmami_dbdevops
+  DOCKER_IMAGE_NAME: oussamagl/devops
+  DOCKER_IMAGE_TAG: latest
+  
 
 jobs:
     TestCreate:
@@ -68,7 +71,7 @@ jobs:
         uses: docker/login-action@v1.8.0
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          password: ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
 
       - name: Build to Dockerhub
         id: docker_build
@@ -77,4 +80,4 @@ jobs:
           context: .
           push: true
           tags: |
-             latest
+               ${{env.DOCKER_IMAGE_NAME}}:${{env.DOCKER_IMAGE_TAG}}
