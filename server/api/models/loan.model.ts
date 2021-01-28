@@ -4,7 +4,7 @@ interface ILoan extends Document {
   owner: string;
   ammount: number;
   ammountToPay: number;
-  status:string;
+  status: string;
 }
 
 const LoanSchema: Schema = new Schema({
