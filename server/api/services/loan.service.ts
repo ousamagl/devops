@@ -18,7 +18,7 @@ const LoanSchema: Schema = new Schema({
 const Loan: Model<ILoan> = model<ILoan>('Loan', LoanSchema);
 
 export class BankService {
-  create(owner: string, ammount: number): Promise<ILoan> {
+  create(owner: string, ammount: number, status: string): Promise<ILoan> {
     const tmm = 1.12;
     const ammountToPay = ammount * tmm;
     L.info(`Loan assigned to : ${owner}`);
@@ -26,20 +26,7 @@ export class BankService {
       owner: owner,
       ammount: ammount,
       ammountToPay: ammountToPay,
-      status: 'unpayed',
-    });
-
-    return Promise.resolve(loan);
-  }
-  update(owner: string, ammount: number): Promise<ILoan> {
-    const tmm = 1.12;
-    const original = ammount / tmm;
-    L.info(`Loan assigned to : ${owner} closed`);
-    const loan = ILoan.create({
-      owner: owner,
-      ammount: original,
-      ammountToPay: ammount,
-      status: 'payed',
+      status: status,
     });
 
     return Promise.resolve(loan);
