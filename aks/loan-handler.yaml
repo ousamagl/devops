@@ -15,6 +15,7 @@ spec:
       containers:
       - name: azure-loan-back
         image: oussamagl/loanhandler:latest
+        imagePullPolicy: Always
         env:
         - name: NODE_ENV
           value: "prod"
