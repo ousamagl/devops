@@ -8,7 +8,7 @@ env:
   PORT: 3000
   NODE_ENV: test
   MONGO_DB: ogalmami_dbdevops
-  DOCKER_IMAGE_NAME: oussamagl/LoanHandler
+  DOCKER_IMAGE_NAME: oussamagl/loanhandler
   DOCKER_IMAGE_TAG: latest
   
 
