@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: azure-loan-back
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: azure-loan-back
+  template:
+    metadata:
+      labels:
+        app: azure-loan-back
+    spec:
+      containers:
+      - name: azure-loan-back
+        image: oussamagl/loanhandler:latest
+        env:
+        - name: NODE_ENV
+          value: "prod"
+        - name: LOG_LEVEL
+          value: "info"
+        - name: PORT
+          value: "3000"
+        - name: MONGO_USERNAME
+          value: "ogalmami"
+        - name: MONGO_PASSWORD
+          value: "oussama112233445566"
+        - name: MONGO_HOSTNAME
+          value: "mongodb-ogalmami.alwaysdata.net"
+        - name: MONGO_PORT
+          value: "27017"
+        - name: MONGO_DB
+          value: "ogalmami_dbdevops"
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
+        ports:
+        - containerPort: 3000
+          name: loan
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: loadbalancer
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 3000
+    protocol: TCP
+  selector:
+    app: azure-loan-back
