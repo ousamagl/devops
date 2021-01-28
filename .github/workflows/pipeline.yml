@@ -10,6 +10,9 @@ env:
   MONGO_DB: ogalmami_dbdevops
   DOCKER_IMAGE_NAME: oussamagl/loanhandler
   DOCKER_IMAGE_TAG: latest
+  NAMESPACE: default
+  MANIFEST_FULL_PATH: aks/loan-handler.yaml
+ 
   
 
 jobs:
@@ -84,3 +87,14 @@ jobs:
           push: true
           tags: |
                ${{env.DOCKER_IMAGE_NAME}}:latest
+      - uses: azure/aks-set-context@v1
+        with:
+            creds: '${{ secrets.AZURE_CREDENTIALS }}'
+            resource-group: 'deployment'
+            cluster-name: 'loancluster'
+      - uses: Azure/k8s-deploy@v1.3
+        with:
+          namespace: ${{env.NAMESPACE}}
+          manifests: |
+           ${{env.MANIFEST_FULL_PATH}}
+          kubectl-version: 'latest'
