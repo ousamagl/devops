@@ -8,7 +8,7 @@ env:
   PORT: 3000
   NODE_ENV: test
   MONGO_DB: ogalmami_dbdevops
-  DOCKER_IMAGE_NAME: oussamagl/devops
+  DOCKER_IMAGE_NAME: oussamagl/LoanHandler
   DOCKER_IMAGE_TAG: latest
   
 
@@ -80,4 +80,4 @@ jobs:
           context: .
           push: true
           tags: |
-               ${{env.DOCKER_IMAGE_NAME}}:${{env.DOCKER_IMAGE_TAG}}
+               ${{env.DOCKER_IMAGE_NAME}}:latest
