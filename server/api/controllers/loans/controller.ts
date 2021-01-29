@@ -13,4 +13,5 @@ export class Controller {
     BankService.all().then((r) => res.json(r));
   }
 }
+//test
 export default new Controller();
