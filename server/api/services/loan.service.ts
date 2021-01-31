@@ -40,7 +40,7 @@ export class BankService {
 
   allPaid(): Promise<ILoan[]> {
     L.info('fetching all loans');
-    const loans = ILoan.find({ status:'Paid'||'paid' });
+    const loans = ILoan.find({ status: 'Paid' || 'paid' });
     return Promise.resolve(loans);
   }
 }
