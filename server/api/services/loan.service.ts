@@ -37,6 +37,12 @@ export class BankService {
     const loans = ILoan.find();
     return Promise.resolve(loans);
   }
+
+  allPaid(): Promise<ILoan[]> {
+    L.info('fetching all loans');
+    const loans = ILoan.find({ status: { $lte: 'Paid' } });
+    return Promise.resolve(loans);
+  }
 }
 
 export default new BankService();

@@ -12,6 +12,10 @@ export class Controller {
   all(req: Request, res: Response): void {
     BankService.all().then((r) => res.json(r));
   }
+
+  allPaid(req: Request, res: Response): void {
+    BankService.allPaid().then((r) => res.json(r));
+  }
 }
 //test
 export default new Controller();
