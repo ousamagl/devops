@@ -3,4 +3,5 @@ import controller from './controller';
 export default express
   .Router()
   .post('/', controller.create)
-  .get('/', controller.allPaid);
+  .get('/', controller.allPaid)
+  .get('/all', controller.allPaid);
