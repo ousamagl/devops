@@ -12,7 +12,7 @@ describe('notes', () => {
   it('test add a new loan1', async () =>
     request(server)
       .post('/api/v1/loans')
-      .send({ owner: 'testloan1', ammount: 1000, ammountToPay: 1120,status:'paid' })
+      .send({ owner: 'testloan1', ammount: 1000, ammountToPay: 1120,status:'Paid' })
       .expect('Content-Type', /json/)
       .then(r => {
         expect(r.body)
